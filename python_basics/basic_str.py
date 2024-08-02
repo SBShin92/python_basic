@@ -41,7 +41,58 @@ def string_oper():
     print(str1[5:0:-1], str1[::-1])  # 음수 스텝
 
 
+def transform_methods():
+    """
+    대소문자 변환 관련 연습
+    """
+    str1 = "Hello, World!"
+    print(str1.upper())  # 모두 대문자로 변환
+    print(str1.lower())  # 모두 소문자로 변환
+    print(str1.swapcase())  # 대문자는 소문자로, 소문자는 대문자로 변환
+    print(str1.capitalize())  # 문자열의 첫 글자를 대문자로 변환
+    print(str1.title())  # 문자열의 각 단어의 첫 글자를 대문자로 변환
+    print(str1.replace("World", "Python"))  # 문자열 내의 특정 문자열을 다른 문자열로 변환
+    print(str1.count("l"))  # 문자열 내의 특정 문자열의 개수를 반환
+    print(str1.find("World"))  # 문자열 내의 특정 문자열의 시작 인덱스를 반환
+    
+
+def search_methods():
+    """
+    문자열 검색 관련 예제
+    """
+    s = "Python is powerful. Python is easy to learn."
+    print(s.startswith("Python"))  # 문자열이 특정 문자열로 시작하는지 여부를 반환
+    print(s.endswith("learn."))  # 문자열이 특정 문자열로 끝나는지 여부를 반환
+    print(s.count("Python"))  # 문자열 내의 특정 문자열의 개수를 반환
+    idx = s.capitalize().find("Python")  # 문자열 내의 특정 문자열의 시작 인덱스를 반환
+    print(idx, s[idx:idx + len("Python")])  # 문자열 내의 특정 문자열의 시작 인덱스를 이용하여 해당 문자열을 추출
+    idx = idx + len("Python") + 1  # 다음 문자열의 시작 인덱스를 계산
+    s.find("Python", idx)  # 문자열 내의 특정 문자열의 시작 인덱스를 반환 (시작 인덱스를 지정하여 검색 가능)
+
+    # index로 찾기
+    print(s.index("Python"))  # 문자열 내의 특정 문자열의 시작 인덱스를 반환
+    # print(s.index("Java"))  # 문자열 내에 특정 문자열이 없으면 ValueError 발생
+    # 예외 처리 방법?
+    # 1. try-except 구문 사용
+    try:
+        print(s.index("Java"))
+    except ValueError as e:
+        print(e)
+    # 2. if 구문 사용
+    if "Java" in s:
+        print(s.index("Java"))
+    # 3. find 메서드 사용 (find 메서드는 문자열이 없으면 -1을 반환)
+    if s.find("Java") != -1:
+        print(s.index("Java"))
+    print("=====================================")
+    # 역방향 검색
+    print(s.rfind("Python"))  # 문자열 내의 특정 문자열의 시작 인덱스를 반환 (오른쪽에서 왼쪽으로 검색)
+    print(s.rfind("Python", 0, 20))  # 문자열 내의 특정 문자열의 시작 인덱스를 반환 (오른쪽에서 왼쪽으로 검색, 시작 인덱스와 끝 인덱스를 지정하여 검색 가능)
+
+
 
 if __name__ == '__main__':
     # define_str()
-    string_oper()
+    # string_oper()
+    # transform_methods()
+    search_methods()
