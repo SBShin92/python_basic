@@ -15,9 +15,10 @@ print(incr(step = 4, a = 8))
 def get_total(*args):
     sum = 0
     for x in args:
-        sum += x
+        if isinstance(x, (int, float)):
+            sum += x
     return sum
-print(get_total(1, 3, 5, 7, 9))
+print(get_total(1, 3, 5, "a", "1", 7, 9))
 
 
 
