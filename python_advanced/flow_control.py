@@ -41,9 +41,7 @@ def for_ex():
 
 # 구구단
 def googoodan():
-    for i in range(2, 10):
-        for j in range(1, 10):
-            print("{} * {} = {}".format(i, j, i*j))
+    print("\n".join(["{} * {} = {}".format(i, j, i*j) for i in range(2, 10) for j in range(1, 10)]))
 
 
 # star 피라미드
@@ -52,10 +50,49 @@ def star_pyramid():
         print("*" * i)
 
 
+# 연습문제: 구구단, 피라미드
+def exercise01():
+    googoodan()
+    star_pyramid()
+
+
+def list_comprehension():
+    data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    result = []
+    for num in data:
+        result.append(num*2)
+    print(result)
+
+    print([num * 2 for num in data])  # 위의 결과와 같다.
+    print("===================")
+    strings = ["a", "as", "bat", "car", "dove", "python"]
+    result = [s.upper() for s in strings if len(s) >= 3]
+    print(result)
+
+    # 1 ~ 100 정수 중 3의 배수의 리스트
+    result = [num for num in range(1, 101) if num % 3 == 0]
+    print(result)
+
+
+def set_comprehension():
+    data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    result = {num % 3 for num in data}
+    print(result)
+
+
+def dict_comprehension():
+    strings = ["a", "as", "bat", "car", "dove", "python"]
+    result = {s.upper() : len(s) for s in strings}
+    print(result)
+
+
 
 if __name__ == "__main__":
     # if_statement()
     # cond_expr()
     # for_ex()
-    googoodan()
-    star_pyramid()
+    # exercise01()
+    # list_comprehension()
+    # set_comprehension()
+    dict_comprehension()
