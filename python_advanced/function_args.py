@@ -36,10 +36,23 @@ def clean_strings(strings, *funcs):  # 함수 목록을 가변 파라미터로 �
     results = []
     for string in strings:
         for func in funcs:
-            string = func(string)
+            if callable(func):
+                string = func(string)
         results.append(string)
     return results
     
 states = ['Alabama', ' Georgia', 'Georgia ', 'georgia', 'FlOrIda', 'south carolina', 'West virginia']
 states = clean_strings(states, str.strip, str.title)
 print(states)
+
+
+# 람다함수
+strings = ['foo', 'card', 'bar', 'abab', 'aaaa', 'abab', 'foo']
+
+frequency = {string: strings.count(string) for string in strings}
+print(frequency)  # {'foo': 2, 'card': 1, 'bar': 1, 'abab': 2, 'aaaa': 1}
+strings.sort(key=lambda x: frequency[x])
+print(strings)  # ['card', 'bar', 'aaaa', 'foo', 'abab', 'abab', 'foo']
+
+sorted_str = sorted(strings, key=lambda x: len(x))
+print(sorted_str)
